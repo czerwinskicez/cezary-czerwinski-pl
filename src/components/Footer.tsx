@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MailIcon, PhoneIcon, MapPinIcon, ArrowUpIcon, LinkedinIcon } from 'lucide-react';
+import { MailIcon, MapPinIcon, ArrowUpIcon } from 'lucide-react';
 import { LinkedIn, GitHub } from './SMIcons';
 import Link from 'next/link';
 
