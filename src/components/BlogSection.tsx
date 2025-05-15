@@ -122,7 +122,7 @@ export function BlogSection() {
         </div>
         <div className="text-center mt-12">
           <a href="#" className="px-6 py-3 border border-red-600 text-red-600 font-medium hover:bg-red-600 hover:text-white transition-colors inline-flex items-center group">
-            View All Articles
+            Read More
             <ArrowRightIcon className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

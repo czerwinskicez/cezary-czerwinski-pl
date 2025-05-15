@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserIcon, BriefcaseIcon, GraduationCapIcon, AwardIcon, CodeIcon, GlobeIcon, HeartIcon, CoffeeIcon, BrainIcon } from 'lucide-react';
+import { UserIcon, BriefcaseIcon, GraduationCapIcon, AwardIcon, CodeIcon, GlobeIcon, HeartIcon, CoffeeIcon, BrainIcon, Gamepad2Icon, QuoteIcon } from 'lucide-react';
 import { LinkedIn, GitHub } from './SMIcons';
 
 export function About() {
@@ -16,16 +16,9 @@ export function About() {
           <div className="md:col-span-5">
             <div className="relative mb-8">
               <div className="absolute inset-0 bg-red-600 transform translate-x-3 translate-y-3" />
-              <img src="/src/static/img/profile.png" alt="Cezary Czerwiński Profile" className="relative z-10 w-full h-[400px] object-cover grayscale-[.32] hover:grayscale-0 transition-all duration-500" />
+              <img src="/src/static/img/profile.png" alt="Cezary Czerwiński Profile" className="relative z-10 w-full h-[400px] object-cover object-top grayscale-[.32] hover:grayscale-0 transition-all duration-500" />
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
-                <CodeIcon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
-                <h4 className="font-semibold text-white">Favourite Language</h4>
-                <p className="text-gray-400 text-sm group-hover:text-white">
-                  TypeScript, Node.js
-                </p>
-              </div>
               <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
                 <GlobeIcon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
                 <h4 className="font-semibold text-white">Location</h4>
@@ -34,17 +27,38 @@ export function About() {
                 </p>
               </div>
               <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
+                <CodeIcon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
+                <h4 className="font-semibold text-white">Language</h4>
+                <p className="text-gray-400 text-sm group-hover:text-white">
+                  TypeScript, Node.js
+                </p>
+              </div>
+              <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
                 <HeartIcon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
                 <h4 className="font-semibold text-white">Interests</h4>
                 <p className="text-gray-400 text-sm group-hover:text-white">
-                  Business, Science, Future, AI Behaviour
+                  Business, Science, Politics, Future
+                </p>
+              </div>
+              <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
+                <Gamepad2Icon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
+                <h4 className="font-semibold text-white">Hobbys</h4>
+                <p className="text-gray-400 text-sm group-hover:text-white">
+                  Programming, Gaming, Biking, Philosophizing
+                </p>
+              </div>
+              <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
+                <QuoteIcon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
+                <h4 className="font-semibold text-white">Motto</h4>
+                <p className="text-gray-400 text-sm group-hover:text-white">
+                  Non omnis moriar.
                 </p>
               </div>
               <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
                 <CoffeeIcon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
                 <h4 className="font-semibold text-white">Coffee</h4>
                 <p className="text-gray-400 text-sm group-hover:text-white">
-                  Black, Always
+                  Black, no sugar.
                 </p>
               </div>
             </div>
@@ -150,6 +164,18 @@ export function About() {
                     Frontend, Backend, Cloud, Serverless, Microservices, Applications, Ubuntu
                   </p>
                 </div>
+                {/* <div className="space-y-2">
+                  <div className="h-1 bg-red-600"></div>
+                  <p className="font-medium text-white">Business analysis</p>
+                  <p className="text-sm text-gray-400">Internal & External Communication, Risk Management, Optimal Solution Analysis, Market Analysis</p>
+                </div>
+                <div className="space-y-2">
+                  <div className="h-1 bg-red-600"></div>
+                  <p className="font-medium text-white">Web Development</p>
+                  <p className="text-sm text-gray-400">
+                    Frontend, Backend, Cloud, Serverless, Microservices, Applications, Ubuntu
+                  </p>
+                </div> */}
                 <div className="space-y-2">
                   <div className="h-1 bg-red-600"></div>
                   <p className="font-medium text-white">Leadership</p>

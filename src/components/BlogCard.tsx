@@ -41,9 +41,10 @@ export function BlogCard({
         </h3>
         <p className="text-gray-400 mb-4 line-clamp-3">{excerpt}</p>
         <div className="flex justify-between items-center">
-          <a href="#" className="text-red-500 font-medium hover:text-red-400 transition-colors inline-flex items-center group">
-            Read More
-            <ArrowRightIcon size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
+          <div className="flex-grow"></div>
+          <a href="#" className="border border-red-600 text-red-600 px-4 py-2 font-medium hover:bg-red-600 hover:text-white transition-colors inline-flex items-center gap-1">
+            Read
+            <ArrowRightIcon className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </div>
