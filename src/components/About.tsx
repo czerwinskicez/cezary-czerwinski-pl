@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserIcon, BriefcaseIcon, GraduationCapIcon, AwardIcon, CodeIcon, GlobeIcon, HeartIcon, CoffeeIcon, BrainIcon, Gamepad2Icon, QuoteIcon } from 'lucide-react';
+import { UserIcon, BriefcaseIcon, GraduationCapIcon, CodeIcon, GlobeIcon, HeartIcon, CoffeeIcon, BrainIcon, Gamepad2Icon, QuoteIcon } from 'lucide-react';
 import { LinkedIn, GitHub } from './SMIcons';
 
 export function About() {
