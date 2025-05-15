@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Layout } from '../../components/Layout';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { BlogPost } from '../api/blog';
+import { BlogPost, mockBlogPosts } from '../api/blog';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 interface BlogIndexProps {
@@ -84,19 +84,15 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    // In a production environment, we would fetch this from an API
-    console.log("process.env.NEXT_PUBLIC_BASE_URL@index", process.env.NEXT_PUBLIC_BASE_URL);
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog`);
-    const data = await res.json();
-
+    // Use mockBlogPosts directly instead of fetching from API
     return {
       props: {
-        posts: data.posts || [],
+        posts: mockBlogPosts,
       },
       revalidate: 60 * 10, // Revalidate every 10 minutes
     };
   } catch (error) {
-    console.error('Error fetching blog posts:', error);
+    console.error('Error with blog posts:', error);
     return {
       props: {
         posts: [],

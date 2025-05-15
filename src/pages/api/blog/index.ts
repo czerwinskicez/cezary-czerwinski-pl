@@ -21,7 +21,7 @@ type BlogResponse = {
 
 // For a real application, you would typically fetch this from a database
 // This is mocked for simplicity - we're using the data from BlogSection.tsx
-const mockBlogPosts: BlogPost[] = [
+export const mockBlogPosts: BlogPost[] = [
   {
     slug: "future-of-work-deep-tech",
     title: "170 mln nowych ról deep-tech: jak uplasować się po jasnej stronie mocy?",

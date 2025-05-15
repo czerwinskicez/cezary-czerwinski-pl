@@ -8,7 +8,7 @@ type BlogPostResponse = {
 };
 
 // Mock blog post content - in a real app, you'd fetch this from a CMS or database
-const mockBlogPostContent: Record<string, string> = {
+export const mockBlogPostContent: Record<string, string> = {
   'future-of-work-deep-tech': `
 # 170 mln nowych ról deep-tech: jak uplasować się po jasnej stronie mocy?
 

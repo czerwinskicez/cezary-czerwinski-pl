@@ -8,7 +8,8 @@ import { Layout } from '../../components/Layout';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { BlogPost } from '../api/blog';
+import { BlogPost, mockBlogPosts } from '../api/blog';
+import { mockBlogPostContent } from '../api/blog/[slug]';
 
 interface BlogPostPageProps {
   post: BlogPost & { content: string };
@@ -114,12 +115,8 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // In a production environment, we would fetch this from an API
-  console.log("process.env.NEXT_PUBLIC_BASE_URL@[slug](1)", process.env.NEXT_PUBLIC_BASE_URL);
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog`);
-  const data = await res.json();
-  
-  const paths = data.posts.map((post: BlogPost) => ({
+  // Use mock data directly instead of fetching from API
+  const paths = mockBlogPosts.map((post: BlogPost) => ({
     params: { slug: post.slug },
   }));
 
@@ -131,7 +128,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const slug = params?.slug;
+    const slug = params?.slug as string;
     
     if (!slug) {
       return {
@@ -139,21 +136,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       };
     }
 
-    // In a production environment, we would fetch this from an API
-  console.log("process.env.NEXT_PUBLIC_BASE_URL@[slug](2)", process.env.NEXT_PUBLIC_BASE_URL);
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog/${slug}`);
+    // Find the post directly from mock data
+    const post = mockBlogPosts.find((post: BlogPost) => post.slug === slug);
     
-    if (!res.ok) {
+    if (!post) {
       return {
         notFound: true,
       };
     }
 
-    const data = await res.json();
+    // Get the content from mockBlogPostContent
+    const content = mockBlogPostContent[slug] || '';
     
     return {
       props: {
-        post: data.post,
+        post: {
+          ...post,
+          content
+        },
       },
       revalidate: 60 * 60, // Revalidate every hour
     };
