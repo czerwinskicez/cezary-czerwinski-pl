@@ -1,53 +1,12 @@
 import React from 'react';
 import { BlogCard } from './BlogCard';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-export function BlogSection() {
-  const blogPosts_old = [{
-    title: 'Cloud Migration Strategies for Enterprise Applications',
-    excerpt: 'A comprehensive guide to planning and executing successful cloud migrations for large-scale enterprise applications while minimizing downtime and risk.',
-    date: 'Oct 15, 2023',
-    readTime: '8 min read',
-    category: 'Cloud Computing',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
-  }, {
-    title: 'The Future of AI in Business Decision Making',
-    excerpt: 'Exploring how artificial intelligence is revolutionizing business intelligence and enabling more data-driven decision making across industries.',
-    date: 'Sep 28, 2023',
-    readTime: '6 min read',
-    category: 'Artificial Intelligence',
-    image: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
-  }, {
-    title: 'Implementing Zero Trust Security Models',
-    excerpt: 'A practical approach to implementing zero trust security architecture in modern organizations, with real-world case studies and best practices.',
-    date: 'Sep 10, 2023',
-    readTime: '10 min read',
-    category: 'Cybersecurity',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
-  }, {
-    title: 'Digital Transformation Roadmap for Traditional Industries',
-    excerpt: 'Strategic framework for traditional businesses looking to embrace digital transformation without disrupting their core operations.',
-    date: 'Aug 22, 2023',
-    readTime: '7 min read',
-    category: 'Digital Strategy',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
-  }, {
-    title: 'Building Scalable Microservices Architectures',
-    excerpt: 'Technical deep dive into designing, implementing, and managing microservices architectures that can scale with your business needs.',
-    date: 'Aug 05, 2023',
-    readTime: '9 min read',
-    category: 'Software Architecture',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
-  }, {
-    title: 'The Role of Edge Computing in IoT Ecosystems',
-    excerpt: 'Examining how edge computing is transforming IoT implementations by reducing latency and enhancing real-time processing capabilities.',
-    date: 'Jul 19, 2023',
-    readTime: '5 min read',
-    category: 'IoT',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
-  }];
+import Link from 'next/link';
 
+export function BlogSection() {
   const blogPosts = [
   {
+    "slug": "future-of-work-deep-tech",
     "title": "170 mln nowych ról deep-tech: jak uplasować się po jasnej stronie mocy?",
     "date": "2025-05-20",
     "category": "AI & Future-of-Work",
@@ -57,6 +16,7 @@ export function BlogSection() {
     "readingTime": "7 min"
   },
   {
+    "slug": "sysml-v2-kotlin",
     "title": "SysML v2 w praktyce: od diagramu do deploy'u w Kotlin-native",
     "date": "2025-06-02",
     "category": "MBSE / SysML v2",
@@ -66,6 +26,7 @@ export function BlogSection() {
     "readingTime": "9 min"
   },
   {
+    "slug": "developer-experience-devops",
     "title": "Developer Experience > DevOps? Case study z platformy serwisowej",
     "date": "2025-06-15",
     "category": "DevEx & Platform Engineering",
@@ -73,34 +34,7 @@ export function BlogSection() {
     "tag": "DevEx",
     "heroImg": "/img/future.webp",
     "readingTime": "6 min"
-  },
-  // {
-  //   "title": "NIS2: lista kontrolna dla SMB — 12 miesięcy do deadlinu",
-  //   "date": "2025-07-01",
-  //   "category": "Cybersecurity (NIS2)",
-  //   "excerpt": "Dyrektywa NIS2 właśnie weszła w życie. Co musi zrobić średnia firma produkcyjna, żeby uniknąć miliona € kary?",
-  //   "tag": "Security",
-  //   "heroImg": "/img/posts/nis2.jpg",
-  //   "readingTime": "8 min"
-  // },
-  // {
-  //   "title": "AI-first product design: prompt-to-prototype w 48 h",
-  //   "date": "2025-07-12",
-  //   "category": "AI & Future-of-Work",
-  //   "excerpt": "Łączę LangChain, Figma AI i Vercel Edge Functions, żeby w dwa dni zwalidować pomysł. Tutorial + repo.",
-  //   "tag": "GenAI",
-  //   "heroImg": "/img/posts/prompt-prototype.jpg",
-  //   "readingTime": "10 min"
-  // },
-  // {
-  //   "title": "Zielona energia × IoT: jak MBSE przyspiesza certyfikację pomp ciepła",
-  //   "date": "2025-07-25",
-  //   "category": "Green Energy Tech",
-  //   "excerpt": "Certyfikacja eco-urządzeń wymaga tony dokumentów. Pokazuję, jak model-based podejście skróciło proces o 30 %.",
-  //   "tag": "GreenTech",
-  //   "heroImg": "/img/posts/greentech.jpg",
-  //   "readingTime": "7 min"
-  // }
+  }
 ];
 
   return <section id="blog" className="pt-0 pb-20 bg-zinc-900 relative">
@@ -118,13 +52,24 @@ export function BlogSection() {
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => <BlogCard key={index} title={post.title} excerpt={post.excerpt} date={post.date} readTime={post.readingTime} category={post.category} image={post.heroImg} />)}
+          {blogPosts.map((post, index) => (
+            <BlogCard 
+              key={index} 
+              title={post.title} 
+              excerpt={post.excerpt} 
+              date={post.date} 
+              readTime={post.readingTime} 
+              category={post.category} 
+              image={post.heroImg}
+              slug={post.slug}
+            />
+          ))}
         </div>
         <div className="text-center mt-12">
-          <a href="#" className="px-6 py-3 border border-red-600 text-red-600 font-medium hover:bg-red-600 hover:text-white transition-colors inline-flex items-center group">
+          <Link href="/blog" className="px-6 py-3 border border-red-600 text-red-600 font-medium hover:bg-red-600 hover:text-white transition-colors inline-flex items-center group">
             Read More
             <ArrowRightIcon className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>;

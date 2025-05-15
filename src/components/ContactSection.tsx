@@ -1,6 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export function ContactSection() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    success: false,
+    message: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus({ ...status, submitting: true });
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({
+          submitting: false,
+          submitted: true,
+          success: true,
+          message: data.message
+        });
+        setEmail('');
+      } else {
+        setStatus({
+          submitting: false,
+          submitted: true,
+          success: false,
+          message: data.message || 'Failed to subscribe. Please try again.'
+        });
+      }
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      setStatus({
+        submitting: false,
+        submitted: true,
+        success: false,
+        message: 'Network error. Please try again later.'
+      });
+    }
+  };
+
   return (
     <section id="newsletter" className="pb-20 bg-black text-white">
       
@@ -13,11 +63,20 @@ export function ContactSection() {
             Subscribe to my newsletter to get the latest updates on tech insights, articles, and exclusive content.
           </p>
         </div>
-        <form className="bg-zinc-900 p-8 md:p-12 shadow-xl">
+        <form className="bg-zinc-900 p-8 md:p-12 shadow-xl" onSubmit={handleSubmit}>
           <div className="mb-6 text-center">
             <p className="text-slate-300 mb-6">
               Join my mailing list and be the first to know about new articles, resources, and industry updates.
             </p>
+            
+            {status.submitted && (
+              <div className={`p-4 mb-6 ${status.success ? 'bg-green-800/30 border border-green-600' : 'bg-red-800/30 border border-red-600'}`}>
+                <p className={status.success ? 'text-green-200' : 'text-red-200'}>
+                  {status.message}
+                </p>
+              </div>
+            )}
+            
             <div className="flex flex-col md:flex-row gap-4">
               <input 
                 type="email" 
@@ -26,12 +85,16 @@ export function ContactSection() {
                 placeholder="Your email address" 
                 className="flex-grow bg-zinc-800 border border-zinc-700 text-white px-4 py-3 focus:outline-none focus:border-red-600 transition-colors" 
                 required 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={status.submitting}
               />
               <button 
                 type="submit" 
-                className="md:w-auto px-8 py-3 bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors"
+                className="md:w-auto px-8 py-3 bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors disabled:bg-gray-600 disabled:cursor-not-allowed"
+                disabled={status.submitting}
               >
-                Subscribe
+                {status.submitting ? 'Subscribing...' : 'Subscribe'}
               </button>
             </div>
             <p className="text-gray-500 text-sm mt-4">
