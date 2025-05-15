@@ -1,0 +1,16 @@
+import React from 'react';
+import { Layout } from './components/Layout';
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { About } from './components/About';
+import { BlogSection } from './components/BlogSection';
+import { Footer } from './components/Footer';
+export function App() {
+  return <Layout>
+      <Header />
+      <Hero />
+      <About />
+      <BlogSection />
+      <Footer />
+    </Layout>;
+}
