@@ -8,14 +8,15 @@ export function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Hi, I'm John
+              Hi, I'm Cezary
               <br />
-              <span className="text-red-500">Tech Enthusiast</span> & Writer
+              <span className="text-red-500">Enthusiast <br />of Future</span> <br />& Technology
             </h1>
             <p className="text-lg md:text-xl text-gray-400">
-              Sharing my journey and insights in technology, cloud architecture,
+              {/* Sharing my journey and insights in technology, cloud architecture,
               and digital transformation. Let's explore the future of tech
-              together.
+              together. */}
+              We shouldn't be scared of the future. <br />We should be excited about it, yet it comes with challenges and dificult decisions.
             </p>
             <div className="flex space-x-4">
               <a href="#blog" className="px-6 py-3 bg-red-600 text-white font-medium hover:bg-red-700 transition-colors flex items-center group">
@@ -29,7 +30,7 @@ export function Hero() {
           </div>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-red-600/20 to-black/50 transform rotate-6" />
-            <img src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?ixlib=rb-4.0.3" alt="Technology consultant working" className="relative w-full object-cover h-[400px] grayscale hover:grayscale-0 transition-all duration-500" />
+            <img src="/src/static/img/future.webp" alt="Technology consultant working" className="relative w-full object-cover h-[400px] grayscale-[.50] hover:grayscale-0 transition-all duration-500" />
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
 import React from 'react';
-import { UserIcon, BriefcaseIcon, GraduationCapIcon, AwardIcon, CodeIcon, GlobeIcon, HeartIcon, CoffeeIcon } from 'lucide-react';
+import { UserIcon, BriefcaseIcon, GraduationCapIcon, AwardIcon, CodeIcon, GlobeIcon, HeartIcon, CoffeeIcon, BrainIcon } from 'lucide-react';
+import { LinkedIn, GitHub } from './SMIcons';
+
 export function About() {
-  return <section id="about" className="py-20 bg-black relative">
-      <div className="absolute top-0 left-0 w-full h-32 bg-zinc-900 transform -skew-y-2" />
+  return <section id="about" className="pt-16 pb-40 bg-black relative">
+      <div className="absolute -top-5 left-0 w-full h-32 bg-zinc-900 transform -skew-y-2" />
       <div className="container mx-auto max-w-5xl px-4 relative">
         <div className="text-center mb-16">
           <span className="text-red-500 font-medium">Get to know me</span>
@@ -14,28 +16,28 @@ export function About() {
           <div className="md:col-span-5">
             <div className="relative mb-8">
               <div className="absolute inset-0 bg-red-600 transform translate-x-3 translate-y-3" />
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3" alt="Profile picture" className="relative z-10 w-full h-[400px] object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+              <img src="/src/static/img/profile.png" alt="Cezary Czerwiński Profile" className="relative z-10 w-full h-[400px] object-cover grayscale-[.32] hover:grayscale-0 transition-all duration-500" />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
                 <CodeIcon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
-                <h4 className="font-semibold text-white">Tech Stack</h4>
+                <h4 className="font-semibold text-white">Favourite Language</h4>
                 <p className="text-gray-400 text-sm group-hover:text-white">
-                  React, Node, Cloud
+                  TypeScript, Node.js
                 </p>
               </div>
               <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
                 <GlobeIcon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
                 <h4 className="font-semibold text-white">Location</h4>
                 <p className="text-gray-400 text-sm group-hover:text-white">
-                  San Francisco
+                  Poland
                 </p>
               </div>
               <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
                 <HeartIcon className="w-6 h-6 mb-2 text-red-500 group-hover:text-white" />
                 <h4 className="font-semibold text-white">Interests</h4>
                 <p className="text-gray-400 text-sm group-hover:text-white">
-                  Tech, Travel, Music
+                  Business, Science, Future, AI Behaviour
                 </p>
               </div>
               <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
@@ -47,21 +49,13 @@ export function About() {
               </div>
             </div>
             <div className="flex justify-center space-x-4 mt-8">
-              <a href="#" className="w-12 h-12 bg-zinc-900 flex items-center justify-center hover:bg-red-600 transition-colors group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="text-red-500 group-hover:text-white" viewBox="0 0 16 16">
-                  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-                </svg>
-              </a>
-              <a href="#" className="w-12 h-12 bg-zinc-900 flex items-center justify-center hover:bg-red-600 transition-colors group">
+              <LinkedIn />
+              {/* <a href="#" className="w-12 h-12 bg-zinc-900 flex items-center justify-center hover:bg-red-600 transition-colors group">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="text-red-500 group-hover:text-white" viewBox="0 0 16 16">
                   <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
                 </svg>
-              </a>
-              <a href="#" className="w-12 h-12 bg-zinc-900 flex items-center justify-center hover:bg-red-600 transition-colors group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="text-red-500 group-hover:text-white" viewBox="0 0 16 16">
-                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                </svg>
-              </a>
+              </a> */}
+              <GitHub />
             </div>
           </div>
           {/* Right Column - Content */}
@@ -90,20 +84,20 @@ export function About() {
                 <ul className="space-y-4 text-gray-300">
                   <li>
                     <span className="text-red-500 font-medium">
-                      2018 - Present
+                      2025 - Present
                     </span>
-                    <p className="font-medium mt-1">Senior Tech Consultant</p>
+                    <p className="font-medium mt-1">PPH Kostrzewa - Technology Lead</p>
                     <p className="text-sm text-gray-400">
-                      Helping businesses navigate digital transformation
+                      Helping to navigate into digital transformation and innovation
                     </p>
                   </li>
                   <li>
                     <span className="text-red-500 font-medium">
-                      2014 - 2018
+                      2021 - 2024
                     </span>
-                    <p className="font-medium mt-1">IT Strategy Consultant</p>
+                    <p className="font-medium mt-1">PwC - Marketing Cloud Consultant</p>
                     <p className="text-sm text-gray-400">
-                      Architecting enterprise solutions
+                      Understanding client needs, consulting on best practices, and delivering best available solutions
                     </p>
                   </li>
                 </ul>
@@ -116,49 +110,56 @@ export function About() {
                 <ul className="space-y-4 text-gray-300">
                   <li>
                     <span className="text-red-500 font-medium">
-                      2012 - 2014
+                      Day of birth - Current
                     </span>
-                    <p className="font-medium mt-1">MBA, Tech Management</p>
-                    <p className="text-sm text-gray-400">Stanford University</p>
+                    <p className="font-medium mt-1">Life learner</p>
+                    <p className="text-sm text-gray-400">Always thirsty for acquiring knowledge</p>
                   </li>
                   <li>
                     <span className="text-red-500 font-medium">
-                      2008 - 2012
+                      2021 - 2023
                     </span>
-                    <p className="font-medium mt-1">BSc, Computer Science</p>
-                    <p className="text-sm text-gray-400">MIT</p>
+                    <p className="font-medium mt-1">WIT Academy</p>
+                    <p className="text-sm text-gray-400">IT Management</p>
+                  </li>
+                  <li>
+                    <span className="text-red-500 font-medium">
+                      2018 - 2021
+                    </span>
+                    <p className="font-medium mt-1">Military Univeristy of Technology</p>
+                    <p className="text-sm text-gray-400">Information Technology</p>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="bg-zinc-900 p-6">
               <div className="flex items-center mb-4">
-                <AwardIcon className="text-red-500 mr-3" size={24} />
-                <h3 className="text-xl font-bold text-white">What I Do Best</h3>
+                <BrainIcon className="text-red-500 mr-3" size={24} />
+                <h3 className="text-xl font-bold text-white">Fields of interest</h3>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <div className="h-1 bg-red-600"></div>
-                  <p className="font-medium text-white">Cloud Architecture</p>
-                  <p className="text-sm text-gray-400">AWS, Azure, GCP</p>
+                  <p className="font-medium text-white">Business analysis</p>
+                  <p className="text-sm text-gray-400">Internal & External Communication, Risk Management, Optimal Solution Analysis, Market Analysis</p>
                 </div>
                 <div className="space-y-2">
                   <div className="h-1 bg-red-600"></div>
                   <p className="font-medium text-white">Web Development</p>
                   <p className="text-sm text-gray-400">
-                    React, Node.js, TypeScript
+                    Frontend, Backend, Cloud, Serverless, Microservices, Applications, Ubuntu
                   </p>
                 </div>
                 <div className="space-y-2">
                   <div className="h-1 bg-red-600"></div>
-                  <p className="font-medium text-white">Tech Writing</p>
-                  <p className="text-sm text-gray-400">Blogs, Documentation</p>
+                  <p className="font-medium text-white">Leadership</p>
+                  <p className="text-sm text-gray-400">Team Management, Public Presentations, Project Organization, Networking Conferences</p>
                 </div>
                 <div className="space-y-2">
                   <div className="h-1 bg-red-600"></div>
-                  <p className="font-medium text-white">Problem Solving</p>
+                  <p className="font-medium text-white">Research & Development</p>
                   <p className="text-sm text-gray-400">
-                    System Design, Architecture
+                    Quantum Computing, Machine Learning, LLM, AI Agents, Polymorphic System Architectures
                   </p>
                 </div>
               </div>

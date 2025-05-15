@@ -6,9 +6,9 @@ export function Header() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-2">
           <div className="h-10 w-10 bg-red-600 flex items-center justify-center text-white font-bold text-xl clip-edges">
-            JD
+            CC
           </div>
-          <span className="font-bold text-xl tracking-wider">John Doe</span>
+          <span className="font-bold text-xl tracking-wider">Cezary Czerwiński</span>
         </div>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
