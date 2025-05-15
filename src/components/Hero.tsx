@@ -30,7 +30,7 @@ export function Hero() {
           </div>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-red-600/20 to-black/50 transform rotate-6" />
-            <img src="/src/static/img/future.webp" alt="Technology consultant working" className="relative w-full object-cover h-[400px] grayscale-[.50] hover:grayscale-0 transition-all duration-500" />
+            <img src="/img/future.webp" alt="Technology consultant working" className="relative w-full object-cover h-[400px] grayscale-[.50] hover:grayscale-0 transition-all duration-500" />
           </div>
         </div>
       </div>

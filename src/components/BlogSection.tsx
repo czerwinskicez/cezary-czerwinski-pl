@@ -53,7 +53,7 @@ export function BlogSection() {
     "category": "AI & Future-of-Work",
     "excerpt": "WEF ostrzega i motywuje: automatyzacja zabierze 92 mln etatów, ale stworzy znacznie więcej. Pokażę Ci mapę kompetencji, które dają przewagę.",
     "tag": "FutureWork",
-    "heroImg": "/src/static/img/future.webp",
+    "heroImg": "/img/future.webp",
     "readingTime": "7 min"
   },
   {
@@ -62,7 +62,7 @@ export function BlogSection() {
     "category": "MBSE / SysML v2",
     "excerpt": "Beta-specyfikacja SysML v2 już jest, a OMG zapowiada finalizację w tym roku. Robimy POC na realnym module IoT (grzałki).",
     "tag": "MBSE",
-    "heroImg": "/src/static/img/future.webp",
+    "heroImg": "/img/future.webp",
     "readingTime": "9 min"
   },
   {
@@ -71,7 +71,7 @@ export function BlogSection() {
     "category": "DevEx & Platform Engineering",
     "excerpt": "Jak przerobiłem wewnętrzne CI/CD na self-service portal i zyskaliśmy +38 % przepustowości story points (mierzone w Flow Framework).",
     "tag": "DevEx",
-    "heroImg": "/src/static/img/future.webp",
+    "heroImg": "/img/future.webp",
     "readingTime": "6 min"
   },
   // {

@@ -16,7 +16,7 @@ export function About() {
           <div className="md:col-span-5">
             <div className="relative mb-8">
               <div className="absolute inset-0 bg-red-600 transform translate-x-3 translate-y-3" />
-              <img src="/src/static/img/profile.png" alt="Cezary Czerwiński Profile" className="relative z-10 w-full h-[400px] object-cover object-top grayscale-[.32] hover:grayscale-0 transition-all duration-500" />
+              <img src="/img/profile.png" alt="Cezary Czerwiński Profile" className="relative z-10 w-full h-[400px] object-cover object-top grayscale-[.32] hover:grayscale-0 transition-all duration-500" />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-zinc-900 p-4 group hover:bg-red-600 transition-colors">
