@@ -10,64 +10,84 @@ export default function PrivacyPolicy() {
     <>
       <Head>
         <title>Privacy Policy - Cezary Czerwiński</title>
-        <meta name="description" content="Privacy Policy for Cezary Czerwiński's website" />
+        <meta name="description" content="How I handle your data under GDPR - Privacy Policy for Cezary Czerwiński" />
+        <meta property="og:title" content="Privacy Policy - Cezary Czerwiński" />
+        <meta property="og:description" content="How I handle your data under GDPR." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
         <Header />
-        <div className="container mx-auto px-4 py-20 max-w-4xl">
-          <h1 className="text-3xl md:text-4xl font-bold mb-8">Privacy Policy</h1>
-          
-          <div className="prose prose-lg prose-invert max-w-none">
-            <p className="text-lg mb-6">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-            
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Introduction</h2>
-            <p>This Privacy Policy explains how Cezary Czerwiński ("I", "me", or "my") collects, uses, and protects your personal information when you visit my website or interact with my services.</p>
-            
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Information I Collect</h2>
-            <p>I may collect the following types of information:</p>
-            <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li><strong>Personal Information</strong>: When you subscribe to my newsletter or contact me via the contact form, I collect your name and email address.</li>
-              <li><strong>Usage Data</strong>: Information about how you interact with my website, including browser type, pages visited, time spent, and referring pages.</li>
-              <li><strong>Cookies</strong>: My website uses cookies to enhance your browsing experience. You can control cookies through your browser settings.</li>
+        <div className="container mx-auto px-6 py-20 max-w-4xl text-white">
+          <h1 className="text-4xl font-bold mb-4">Privacy Policy</h1>
+          <p className="text-sm text-gray-400 mb-10">
+            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+
+          <article className="prose prose-invert prose-lg max-w-none leading-relaxed">
+            <h2>Introduction</h2>
+            <p>
+              GDPR can be a pain — but it exists to protect us. So while I might not love cookie banners, I respect your privacy and take data protection seriously.
+            </p>
+            <p>
+              This Privacy Policy explains how I (Cezary Czerwiński — a single human being, not a faceless company) collect, use, and protect your personal data when you browse this site, use my contact form, or subscribe to my newsletter.
+            </p>
+
+            <h2>What I Collect (and Why)</h2>
+            <ul>
+              <li><strong>Personal Information:</strong> Your email and optionally your name, if you contact me or subscribe.</li>
+              <li><strong>Usage Data:</strong> Anonymous statistics like which pages were visited and for how long — strictly for improvement purposes.</li>
+              <li><strong>Cookies:</strong> To enable smooth browsing and basic analytics. You can manage cookies in your browser anytime.</li>
             </ul>
-            
-            <h2 className="text-2xl font-semibold mt-8 mb-4">How I Use Your Information</h2>
-            <p>I use the collected information for the following purposes:</p>
-            <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>To send you newsletters, updates, and marketing communications (only with your explicit consent)</li>
-              <li>To respond to your inquiries and provide requested information</li>
-              <li>To improve my website and services based on usage patterns</li>
-              <li>To comply with legal obligations</li>
+
+            <h2>How I Use Your Data</h2>
+            <ul>
+              <li>To send updates or newsletters — but only if you opted in.</li>
+              <li>To respond when you contact me.</li>
+              <li>To understand how the website is used and improve it.</li>
+              <li>To comply with applicable laws.</li>
             </ul>
-            
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Data Security</h2>
-            <p>I implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.</p>
-            
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Third-Party Services</h2>
-            <p>I may use third-party services (such as email marketing platforms, analytics providers, and hosting services) that collect, monitor, and analyze this information. These third parties have their own privacy policies addressing how they use such information.</p>
-            
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Your Rights</h2>
-            <p>Depending on your location, you may have the following rights regarding your personal data:</p>
-            <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>Access to your personal data</li>
-              <li>Correction of inaccurate data</li>
-              <li>Erasure of your data</li>
-              <li>Restriction of processing</li>
-              <li>Data portability</li>
-              <li>Objection to processing</li>
+
+            <h2>Data Security</h2>
+            <p>
+              I use trusted services and solid security practices to store your data. But no system is perfect — so please don’t send passwords or confidential info via contact forms.
+            </p>
+
+            <h2>Third-Party Services</h2>
+            <p>
+              I use a few external services (like hosting, analytics, email platforms) that may process your data — always under GDPR-compliant terms and only on my behalf.
+            </p>
+
+            <h2>Your Rights</h2>
+            <p>Under the General Data Protection Regulation (EU 2016/679), you can:</p>
+            <ul>
+              <li>Access your data</li>
+              <li>Correct incorrect data</li>
+              <li>Request deletion ("right to be forgotten")</li>
+              <li>Restrict or object to how your data is used</li>
+              <li>Request a copy of your data (data portability)</li>
             </ul>
-            <p>To exercise these rights, please contact me using the information provided at the end of this policy.</p>
-            
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Changes to This Privacy Policy</h2>
-            <p>I may update this Privacy Policy from time to time. I will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date at the top.</p>
-            
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Information</h2>
-            <p>If you have any questions about this Privacy Policy, please contact me at:</p>
-            <p>Email: czerwinskicez@gmail.com</p>
-          </div>
-          
+            <p>
+              To exercise any of these rights, just send me a message at <strong>czerwinskicez@gmail.com</strong>. No red tape.
+            </p>
+
+            <h2>Retention</h2>
+            <p>
+              I don’t keep your data forever — only as long as it's necessary for the purpose it was collected. After that, it’s deleted or anonymized.
+            </p>
+
+            <h2>Policy Changes</h2>
+            <p>
+              If anything changes, I’ll update this page and bump the date above. I won’t spam your inbox or surprise you with shady practices.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+              Have questions or want your data removed?  
+              Email me at <strong>czerwinskicez@gmail.com</strong>.
+            </p>
+          </article>
+
           <div className="mt-12">
             <Link href="/" className="px-6 py-3 bg-red-600 text-white font-medium hover:bg-red-700 transition-colors">
               Back to Home
@@ -78,4 +98,4 @@ export default function PrivacyPolicy() {
       </Layout>
     </>
   );
-} 
+}
