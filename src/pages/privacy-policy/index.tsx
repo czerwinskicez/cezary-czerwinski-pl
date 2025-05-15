@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Layout } from '../components/Layout';
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+import { Layout } from './../../components/Layout';
+import { Header } from './../../components/Header';
+import { Footer } from './../../components/Footer';
 
 export default function PrivacyPolicy() {
   return (

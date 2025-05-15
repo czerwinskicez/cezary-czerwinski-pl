@@ -9,7 +9,7 @@ export function BlogSection() {
     "slug": "future-of-work-deep-tech",
     "title": "170 mln nowych ról deep-tech: jak uplasować się po jasnej stronie mocy?",
     "date": "2025-05-20",
-    "category": "AI & Future-of-Work",
+    "category": "Future-of-Work",
     "excerpt": "WEF ostrzega i motywuje: automatyzacja zabierze 92 mln etatów, ale stworzy znacznie więcej. Pokażę Ci mapę kompetencji, które dają przewagę.",
     "tag": "FutureWork",
     "heroImg": "/img/future.webp",

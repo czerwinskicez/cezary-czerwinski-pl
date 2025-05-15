@@ -115,6 +115,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // In a production environment, we would fetch this from an API
+  console.log("process.env.NEXT_PUBLIC_BASE_URL", process.env.NEXT_PUBLIC_BASE_URL);
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog`);
   const data = await res.json();
   
@@ -139,6 +140,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
 
     // In a production environment, we would fetch this from an API
+  console.log("process.env.NEXT_PUBLIC_BASE_URL", process.env.NEXT_PUBLIC_BASE_URL);
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog/${slug}`);
     
     if (!res.ok) {

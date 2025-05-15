@@ -127,12 +127,13 @@ Developer Experience staje się nowym paradygmatem, który może zastąpić trad
 
 // This reuses the mock blog posts from the index endpoint
 // In a real app, you would fetch this from a database
+
 const mockBlogPosts: BlogPost[] = [
   {
     slug: "future-of-work-deep-tech",
     title: "170 mln nowych ról deep-tech: jak uplasować się po jasnej stronie mocy?",
     date: "2025-05-20",
-    category: "AI & Future-of-Work",
+    category: "Future-of-Work",
     excerpt: "WEF ostrzega i motywuje: automatyzacja zabierze 92 mln etatów, ale stworzy znacznie więcej. Pokażę Ci mapę kompetencji, które dają przewagę.",
     tag: "FutureWork",
     heroImg: "/img/future.webp",
@@ -150,7 +151,7 @@ const mockBlogPosts: BlogPost[] = [
   },
   {
     slug: "developer-experience-devops",
-    title: "Developer Experience > DevOps? Case study z platformy serwisowej",
+    title: "Developer Experience &gt; DevOps? Case study z platformy serwisowej",
     date: "2025-06-15",
     category: "DevEx & Platform Engineering",
     excerpt: "Jak przerobiłem wewnętrzne CI/CD na self-service portal i zyskaliśmy +38 % przepustowości story points (mierzone w Flow Framework).",
