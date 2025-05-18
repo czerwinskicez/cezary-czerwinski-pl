@@ -8,6 +8,8 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { BlogPost } from '../api/blog';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { db } from '../../lib/firebase';
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 
 interface BlogIndexProps {
   posts: BlogPost[];
@@ -84,12 +86,30 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`);
-    const data = await response.json();
+    const postsRef = collection(db, 'posts');
+    const q = query(postsRef, orderBy('date', 'desc'));
+    const querySnapshot = await getDocs(q);
+    
+    const posts: BlogPost[] = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      posts.push({
+        slug: data.slug,
+        title: data.title,
+        date: data.date.toDate().toISOString(),
+        category: data.category,
+        excerpt: data.excerpt,
+        tags: data.tags || [],
+        heroImageUrl: data.heroImageUrl,
+        readingTime: data.readingTime,
+        createdAt: data.createdAt.toDate().toISOString(),
+        updatedAt: data.updatedAt.toDate().toISOString()
+      });
+    });
 
     return {
       props: {
-        posts: data.posts,
+        posts,
       },
       revalidate: 60 * 10,
     };

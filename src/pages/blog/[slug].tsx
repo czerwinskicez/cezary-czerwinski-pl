@@ -8,6 +8,8 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { BlogPost } from '../api/blog';
+import { db } from '../../lib/firebase';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
 interface BlogPostPageProps {
   post: BlogPost & { content: string };
@@ -111,11 +113,11 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`);
-  const data = await response.json();
+  const postsRef = collection(db, 'posts');
+  const querySnapshot = await getDocs(postsRef);
   
-  const paths = data.posts.map((post: BlogPost) => ({
-    params: { slug: post.slug },
+  const paths = querySnapshot.docs.map(doc => ({
+    params: { slug: doc.data().slug },
   }));
 
   return {
@@ -132,16 +134,34 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       return { notFound: true };
     }
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/${slug}`);
-    const data = await response.json();
-    
-    if (!data.success || !data.post) {
+    const postsRef = collection(db, 'posts');
+    const q = query(postsRef, where('slug', '==', slug));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
       return { notFound: true };
     }
 
+    const doc = querySnapshot.docs[0];
+    const data = doc.data();
+
+    const post: BlogPost & { content: string } = {
+      slug: data.slug,
+      title: data.title,
+      date: data.date.toDate().toISOString(),
+      category: data.category,
+      excerpt: data.excerpt,
+      tags: data.tags || [],
+      heroImageUrl: data.heroImageUrl,
+      readingTime: data.readingTime,
+      content: data.content,
+      createdAt: data.createdAt.toDate().toISOString(),
+      updatedAt: data.updatedAt.toDate().toISOString()
+    };
+
     return {
       props: {
-        post: data.post,
+        post,
       },
       revalidate: 60 * 60,
     };
