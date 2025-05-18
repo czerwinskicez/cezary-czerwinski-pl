@@ -6,9 +6,11 @@ import { About } from './components/About';
 import { BlogSection } from './components/BlogSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { Analytics } from "@vercel/analytics/next"
 
 export function App() {
   return <Layout>
+      <Analytics />
       <Header />
       <Hero />
       <About />
