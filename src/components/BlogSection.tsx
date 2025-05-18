@@ -58,7 +58,11 @@ export function BlogSection() {
               key={index} 
               title={post.title} 
               excerpt={post.excerpt} 
-              date={post.date} 
+              date={new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })} 
               readTime={post.readingTime} 
               category={post.category} 
               image={post.heroImageUrl}

@@ -75,11 +75,16 @@ export function About() {
           {/* Right Column - Content */}
           <div className="md:col-span-7 space-y-8">
             <div>
-              <div className="flex items-center mb-4">
+              {/* <div className="flex items-center mb-4">
                 <UserIcon className="text-red-500 mr-3" size={24} />
                 <h3 className="text-2xl font-bold text-white">Who I Am</h3>
-              </div>
+              </div> */}
               <div className="bg-zinc-900 p-6">
+                
+                <div className="flex items-center mb-4">
+                  <UserIcon className="text-red-500 mr-3" size={24} />
+                  <h3 className="text-xl font-bold text-white">Who I Am</h3>
+                </div>
                 <p className="text-gray-300 leading-relaxed">
                   Hey there! I'm a tech enthusiast and consultant who loves
                   turning complex problems into elegant solutions. When I'm not
