@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-// import fs from 'fs';
-// import path from 'path';
+import { db } from '../../../lib/firebase';
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 
 export type BlogPost = {
   slug: string;
@@ -8,9 +8,12 @@ export type BlogPost = {
   date: string;
   category: string;
   excerpt: string;
-  tag: string;
-  heroImg: string;
+  tags: string[];
+  heroImageUrl: string;
   readingTime: string;
+  content?: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 type BlogResponse = {
@@ -19,42 +22,7 @@ type BlogResponse = {
   posts?: BlogPost[];
 };
 
-// For a real application, you would typically fetch this from a database
-// This is mocked for simplicity - we're using the data from BlogSection.tsx
-export const mockBlogPosts: BlogPost[] = [
-  {
-    slug: "future-of-work-deep-tech",
-    title: "170 mln nowych ról deep-tech: jak uplasować się po jasnej stronie mocy?",
-    date: "2025-05-20",
-    category: "Future-of-Work",
-    excerpt: "WEF ostrzega i motywuje: automatyzacja zabierze 92 mln etatów, ale stworzy znacznie więcej. Pokażę Ci mapę kompetencji, które dają przewagę.",
-    tag: "FutureWork",
-    heroImg: "/img/future.webp",
-    readingTime: "7 min"
-  },
-  {
-    slug: "sysml-v2-kotlin",
-    title: "SysML v2 w praktyce: od diagramu do deploy'u w Kotlin-native",
-    date: "2025-06-02",
-    category: "MBSE / SysML v2",
-    excerpt: "Beta-specyfikacja SysML v2 już jest, a OMG zapowiada finalizację w tym roku. Robimy POC na realnym module IoT (grzałki).",
-    tag: "MBSE",
-    heroImg: "/img/future.webp",
-    readingTime: "9 min"
-  },
-  {
-    slug: "developer-experience-devops",
-    title: "Developer Experience > DevOps? Case study z platformy serwisowej",
-    date: "2025-06-15",
-    category: "DevEx & Platform Engineering",
-    excerpt: "Jak przerobiłem wewnętrzne CI/CD na self-service portal i zyskaliśmy +38 % przepustowości story points (mierzone w Flow Framework).",
-    tag: "DevEx",
-    heroImg: "/img/future.webp",
-    readingTime: "6 min"
-  }
-];
-
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<BlogResponse>
 ) {
@@ -66,9 +34,30 @@ export default function handler(
   }
 
   try {
+    const postsRef = collection(db, 'posts');
+    const q = query(postsRef, orderBy('date', 'desc'));
+    const querySnapshot = await getDocs(q);
+    
+    const posts: BlogPost[] = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      posts.push({
+        slug: data.slug,
+        title: data.title,
+        date: data.date.toDate().toISOString(),
+        category: data.category,
+        excerpt: data.excerpt,
+        tags: data.tags || [],
+        heroImageUrl: data.heroImageUrl,
+        readingTime: data.readingTime,
+        createdAt: data.createdAt.toDate().toISOString(),
+        updatedAt: data.updatedAt.toDate().toISOString()
+      });
+    });
+
     return res.status(200).json({
       success: true,
-      posts: mockBlogPosts
+      posts
     });
   } catch (error) {
     console.error('Error fetching blog posts:', error);

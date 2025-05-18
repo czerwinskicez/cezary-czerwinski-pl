@@ -1,41 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BlogCard } from './BlogCard';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { BlogPost } from '../pages/api/blog';
 
 export function BlogSection() {
-  const blogPosts = [
-  {
-    "slug": "future-of-work-deep-tech",
-    "title": "170 mln nowych ról deep-tech: jak uplasować się po jasnej stronie mocy?",
-    "date": "2025-05-20",
-    "category": "Future-of-Work",
-    "excerpt": "WEF ostrzega i motywuje: automatyzacja zabierze 92 mln etatów, ale stworzy znacznie więcej. Pokażę Ci mapę kompetencji, które dają przewagę.",
-    "tag": "FutureWork",
-    "heroImg": "/img/future.webp",
-    "readingTime": "7 min"
-  },
-  {
-    "slug": "sysml-v2-kotlin",
-    "title": "SysML v2 w praktyce: od diagramu do deploy'u w Kotlin-native",
-    "date": "2025-06-02",
-    "category": "MBSE / SysML v2",
-    "excerpt": "Beta-specyfikacja SysML v2 już jest, a OMG zapowiada finalizację w tym roku. Robimy POC na realnym module IoT (grzałki).",
-    "tag": "MBSE",
-    "heroImg": "/img/future.webp",
-    "readingTime": "9 min"
-  },
-  {
-    "slug": "developer-experience-devops",
-    "title": "Developer Experience > DevOps? Case study z platformy serwisowej",
-    "date": "2025-06-15",
-    "category": "DevEx & Platform Engineering",
-    "excerpt": "Jak przerobiłem wewnętrzne CI/CD na self-service portal i zyskaliśmy +38 % przepustowości story points (mierzone w Flow Framework).",
-    "tag": "DevEx",
-    "heroImg": "/img/future.webp",
-    "readingTime": "6 min"
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch('/api/blog');
+        const data = await response.json();
+        if (data.success) {
+          setBlogPosts(data.posts.slice(0, 3)); // Get only first 3 posts
+        }
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="blog" className="pt-0 pb-20 bg-zinc-900 relative">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="text-center">
+            <p className="text-gray-400">Loading...</p>
+          </div>
+        </div>
+      </section>
+    );
   }
-];
 
   return <section id="blog" className="pt-0 pb-20 bg-zinc-900 relative">
       <div className="absolute -top-10 left-0 w-full h-32 bg-black transform -skew-y-2" />
@@ -60,7 +61,7 @@ export function BlogSection() {
               date={post.date} 
               readTime={post.readingTime} 
               category={post.category} 
-              image={post.heroImg}
+              image={post.heroImageUrl}
               slug={post.slug}
             />
           ))}

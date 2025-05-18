@@ -2,9 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        pathname: '/v0/b/**',
+      },
+    ],
   },
   output: 'standalone',
 };
 
-module.exports = nextConfig; 
+export default nextConfig; 

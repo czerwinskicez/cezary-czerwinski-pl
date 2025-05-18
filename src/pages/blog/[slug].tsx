@@ -3,13 +3,11 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
 import { Layout } from '../../components/Layout';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { BlogPost, mockBlogPosts } from '../api/blog';
-import { mockBlogPostContent } from '../api/blog/[slug]';
+import { BlogPost } from '../api/blog';
 
 interface BlogPostPageProps {
   post: BlogPost & { content: string };
@@ -41,10 +39,10 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
         <meta name="description" content={post.excerpt} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={post.heroImg} />
+        <meta property="og:image" content={post.heroImageUrl} />
         <meta property="og:type" content="article" />
         <meta property="article:published_time" content={post.date} />
-        <meta property="article:tag" content={post.tag} />
+        <meta property="article:tag" content={post.tags.join(', ')} />
       </Head>
       <Layout>
         <Header />
@@ -72,10 +70,10 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
               </div>
             </div>
             
-            {post.heroImg && (
+            {post.heroImageUrl && (
               <div className="relative w-full h-[300px] md:h-[400px] mb-8 rounded-lg overflow-hidden">
                 <Image 
-                  src={post.heroImg} 
+                  src={post.heroImageUrl} 
                   alt={post.title}
                   fill
                   style={{ objectFit: 'cover' }}
@@ -85,9 +83,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
             )}
             
             <div className="prose prose-lg prose-invert max-w-none">
-              <ReactMarkdown>
-                {post.content}
-              </ReactMarkdown>
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
             </div>
             
             <div className="mt-12 pt-8 border-t border-gray-800">
@@ -115,14 +111,16 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Use mock data directly instead of fetching from API
-  const paths = mockBlogPosts.map((post: BlogPost) => ({
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`);
+  const data = await response.json();
+  
+  const paths = data.posts.map((post: BlogPost) => ({
     params: { slug: post.slug },
   }));
 
   return {
     paths,
-    fallback: 'blocking', // or true if you want to handle loading states
+    fallback: 'blocking',
   };
 };
 
@@ -131,36 +129,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const slug = params?.slug as string;
     
     if (!slug) {
-      return {
-        notFound: true,
-      };
+      return { notFound: true };
     }
 
-    // Find the post directly from mock data
-    const post = mockBlogPosts.find((post: BlogPost) => post.slug === slug);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog/${slug}`);
+    const data = await response.json();
     
-    if (!post) {
-      return {
-        notFound: true,
-      };
+    if (!data.success || !data.post) {
+      return { notFound: true };
     }
 
-    // Get the content from mockBlogPostContent
-    const content = mockBlogPostContent[slug] || '';
-    
     return {
       props: {
-        post: {
-          ...post,
-          content
-        },
+        post: data.post,
       },
-      revalidate: 60 * 60, // Revalidate every hour
+      revalidate: 60 * 60,
     };
   } catch (error) {
     console.error('Error fetching blog post:', error);
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
 }; 

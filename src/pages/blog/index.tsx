@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Layout } from '../../components/Layout';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { BlogPost, mockBlogPosts } from '../api/blog';
+import { BlogPost } from '../api/blog';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 interface BlogIndexProps {
@@ -44,13 +44,13 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                   <Link href={`/blog/${post.slug}`} className="block h-full">
                     <div className="relative h-48 overflow-hidden">
                       <Image
-                        src={post.heroImg || '/img/placeholder.jpg'}
+                        src={post.heroImageUrl || '/img/placeholder.jpg'}
                         alt={post.title}
                         fill
                         style={{ objectFit: 'cover' }}
                       />
                       <div className="absolute top-0 left-0 bg-red-600 text-white text-xs font-bold uppercase px-3 py-1">
-                        {post.tag}
+                        {post.tags[0]}
                       </div>
                     </div>
                     <div className="p-6">
@@ -84,12 +84,14 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    // Use mockBlogPosts directly instead of fetching from API
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog`);
+    const data = await response.json();
+
     return {
       props: {
-        posts: mockBlogPosts,
+        posts: data.posts,
       },
-      revalidate: 60 * 10, // Revalidate every 10 minutes
+      revalidate: 60 * 10,
     };
   } catch (error) {
     console.error('Error with blog posts:', error);
@@ -97,7 +99,7 @@ export const getStaticProps: GetStaticProps = async () => {
       props: {
         posts: [],
       },
-      revalidate: 60, // Try again more quickly if there was an error
+      revalidate: 60,
     };
   }
 }; 
