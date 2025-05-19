@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 
+type NewsletterResponse = {
+  success: boolean;
+  message: string;
+};
+
 export function ContactSection() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState({
@@ -14,31 +19,29 @@ export function ContactSection() {
     setStatus({ ...status, submitting: true });
 
     try {
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch('https://cms.cezary-czerwinski.pl/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Origin': window.location.origin
         },
+        mode: 'cors',
+        credentials: 'omit',
         body: JSON.stringify({ email }),
       });
 
-      const data = await response.json();
+      const data: NewsletterResponse = await response.json();
 
-      if (response.ok) {
-        setStatus({
-          submitting: false,
-          submitted: true,
-          success: true,
-          message: data.message
-        });
+      setStatus({
+        submitting: false,
+        submitted: true,
+        success: data.success,
+        message: data.message
+      });
+
+      if (data.success) {
         setEmail('');
-      } else {
-        setStatus({
-          submitting: false,
-          submitted: true,
-          success: false,
-          message: data.message || 'Failed to subscribe. Please try again.'
-        });
       }
     } catch (error) {
       console.error('Error subscribing to newsletter:', error);
@@ -98,7 +101,7 @@ export function ContactSection() {
               </button>
             </div>
             <p className="text-gray-500 text-sm mt-4">
-              I respect your privacy. Unsubscribe at any time.
+              I respect your privacy. <a href="/privacy-policy" className="text-red-600 hover:text-red-500">Privacy Policy</a>.
             </p>
           </div>
         </form>
