@@ -8,9 +8,16 @@ import { About } from '../components/About';
 import { BlogSection } from '../components/BlogSection';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
+import { BlogPost } from './api/blog'; // Assuming BlogPost type is exported from here
+import { db } from '../lib/firebase';
+import { collection, getDocs, orderBy, query, limit } from 'firebase/firestore';
+
+interface HomeProps {
+  latestPosts: BlogPost[];
+}
 
 // Define the Home page component
-export default function Home() {
+export default function Home({ latestPosts }: HomeProps) {
   return (
     <>
       <Head>
@@ -23,7 +30,7 @@ export default function Home() {
         <Header />
         <Hero />
         <About />
-        <BlogSection />
+        <BlogSection posts={latestPosts} />
         <ContactSection />
         <Footer />
       </Layout>
@@ -33,9 +40,43 @@ export default function Home() {
 
 // This function gets called at build time
 export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {},
-    // Re-generate the page at most once per day
-    revalidate: 86400,
-  };
+  try {
+    const postsRef = collection(db, 'posts');
+    // Query for the 3 newest posts
+    const q = query(postsRef, orderBy('date', 'desc'), limit(3));
+    const querySnapshot = await getDocs(q);
+    
+    const latestPosts: BlogPost[] = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      latestPosts.push({
+        slug: data.slug,
+        title: data.title,
+        date: data.date.toDate().toISOString(),
+        category: data.category,
+        excerpt: data.excerpt,
+        tags: data.tags || [],
+        heroImageUrl: data.heroImageUrl,
+        readingTime: data.readingTime,
+        createdAt: data.createdAt.toDate().toISOString(),
+        updatedAt: data.updatedAt.toDate().toISOString()
+      });
+    });
+
+    return {
+      props: {
+        latestPosts,
+      },
+      // Re-generate the page at most once per day
+      revalidate: 86400,
+    };
+  } catch (error) {
+    console.error('Error fetching latest posts for home page:', error);
+    return {
+      props: {
+        latestPosts: [],
+      },
+      revalidate: 60 * 5, // Revalidate every 5 minutes in case of error
+    };
+  }
 }; 

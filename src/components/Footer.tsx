@@ -164,6 +164,11 @@ export function Footer() {
                   ></textarea>
                 </div>
               </div>
+              
+              <p className="text-gray-500 text-sm mb-4">
+                I respect your privacy. <a href="/privacy-policy" className="text-red-600 hover:text-red-500">Privacy Policy</a>.
+              </p>
+
               <button 
                 type="submit" 
                 className="px-6 py-2 bg-red-600 text-white font-medium hover:bg-red-700 transition-colors disabled:bg-gray-600 disabled:cursor-not-allowed"

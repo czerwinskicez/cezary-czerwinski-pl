@@ -1,21 +1,23 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
+// import Link from 'next/link'; // No longer needed directly
+// import Image from 'next/image'; // No longer needed directly
 import { Layout } from '../../components/Layout';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { BlogPost } from '../api/blog';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+// import { ArrowRightIcon } from '@heroicons/react/24/outline'; // No longer needed directly
 import { db } from '../../lib/firebase';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { BlogCard } from '../../components/BlogCard'; // Import the new component
 
 interface BlogIndexProps {
   posts: BlogPost[];
 }
 
 export default function BlogIndex({ posts }: BlogIndexProps) {
+  console.log('BlogIndex - Received posts:', posts); // Log received posts
   return (
     <>
       <Head>
@@ -40,41 +42,14 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {posts.map((post) => (
-                <article key={post.slug} className="bg-zinc-900 hover:bg-zinc-800 transition-colors">
-                  <Link href={`/blog/${post.slug}`} className="block h-full">
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={post.heroImageUrl || '/img/placeholder.jpg'}
-                        alt={post.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                      />
-                      <div className="absolute top-0 left-0 bg-red-600 text-white text-xs font-bold uppercase px-3 py-1">
-                        {post.tags[0]}
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center text-gray-400 text-sm mb-3">
-                        <time dateTime={post.date}>{new Date(post.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric'
-                        })}</time>
-                        <span className="mx-2">•</span>
-                        <span>{post.readingTime}</span>
-                      </div>
-                      <h2 className="text-xl font-bold mb-3 line-clamp-2">{post.title}</h2>
-                      <p className="text-gray-400 mb-4 line-clamp-3">{post.excerpt}</p>
-                      <span className="text-red-600 inline-flex items-center">
-                        Read more
-                        <ArrowRightIcon className="ml-2 w-4 h-4" />
-                      </span>
-                    </div>
-                  </Link>
-                </article>
-              ))}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts && posts.length > 0 ? (
+                posts.map((post) => (
+                  <BlogCard key={post.slug} post={post} />
+                ))
+              ) : (
+                <p className="text-gray-400 col-span-full text-center">No blog posts found. Check back later!</p>
+              )}
             </div>
           </div>
         </section>
@@ -85,14 +60,19 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  console.log('BlogIndex - getStaticProps: Fetching posts...');
   try {
     const postsRef = collection(db, 'posts');
     const q = query(postsRef, orderBy('date', 'desc'));
     const querySnapshot = await getDocs(q);
     
+    console.log('BlogIndex - getStaticProps: querySnapshot empty?', querySnapshot.empty);
+    console.log('BlogIndex - getStaticProps: querySnapshot size:', querySnapshot.size);
+
     const posts: BlogPost[] = [];
     querySnapshot.forEach((doc) => {
       const data = doc.data();
+      console.log('BlogIndex - getStaticProps: Processing doc:', doc.id, data);
       posts.push({
         slug: data.slug,
         title: data.title,
@@ -106,20 +86,21 @@ export const getStaticProps: GetStaticProps = async () => {
         updatedAt: data.updatedAt.toDate().toISOString()
       });
     });
+    console.log('BlogIndex - getStaticProps: Processed posts:', posts);
 
     return {
       props: {
         posts,
       },
-      revalidate: 60 * 10,
+      revalidate: 60 * 10, // Revalidate every 10 minutes
     };
   } catch (error) {
-    console.error('Error with blog posts:', error);
+    console.error('Error fetching blog posts for blog index page:', error);
     return {
       props: {
         posts: [],
       },
-      revalidate: 60,
+      revalidate: 60, // Revalidate every 1 minute in case of error
     };
   }
 }; 

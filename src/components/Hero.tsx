@@ -3,7 +3,7 @@ import { ArrowRightIcon } from 'lucide-react';
 export function Hero() {
   return <section id="home" className="relative pt-16 pb-24 px-4 overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-red-600 transform -skew-x-12" />
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('/img/bg.jpeg')] bg-cover bg-center opacity-10" />
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('/img/bg.jpeg')] bg-cover bg-center opacity-15" />
       <div className="container mx-auto max-w-5xl relative">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
