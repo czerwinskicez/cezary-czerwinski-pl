@@ -39,7 +39,7 @@ export function Footer() {
 
 
     try {
-      const response = await fetch('https://cms.cezary-czerwinski.pl/sendContactMessage', {
+      const response = await fetch('https://cms.cezary-czerwinski.pl/contactMessage', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
