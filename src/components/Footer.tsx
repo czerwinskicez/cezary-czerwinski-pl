@@ -3,6 +3,11 @@ import { MailIcon, MapPinIcon, ArrowUpIcon } from 'lucide-react';
 import { LinkedIn, GitHub } from './SMIcons';
 import Link from 'next/link';
 
+type ContactResponse = {
+  success: boolean;
+  message: string;
+};
+
 export function Footer() {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,7 +18,7 @@ export function Footer() {
     submitting: false,
     submitted: false,
     success: false,
-    error: ''
+    message: ''
   });
 
   const scrollToTop = () => {
@@ -30,35 +35,37 @@ export function Footer() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus(prev => ({ ...prev, submitting: true, error: '' }));
+    setFormStatus({ ...formStatus, submitting: true, message: '' });
+
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://cms.cezary-czerwinski.pl/sendContactMessage', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Origin': window.location.origin
         },
-        body: JSON.stringify(formData),
+        mode: 'cors',
+        credentials: 'omit',
+        body: JSON.stringify({ 
+          name: formData.name, 
+          email: formData.email, 
+          message: formData.message 
+        }),
       });
 
-      const data = await response.json();
+      const data: ContactResponse = await response.json();
 
-      if (response.ok) {
-        setFormStatus({
-          submitting: false,
-          submitted: true,
-          success: true,
-          error: ''
-        });
-        // Reset form data
+      setFormStatus({
+        submitting: false,
+        submitted: true,
+        success: data.success,
+        message: data.message
+      });
+
+      if (data.success) {
         setFormData({ name: '', email: '', message: '' });
-      } else {
-        setFormStatus({
-          submitting: false,
-          submitted: true,
-          success: false,
-          error: data.message || 'Something went wrong. Please try again later.'
-        });
       }
     } catch (error) {
       console.error('Error sending message:', error);
@@ -66,7 +73,7 @@ export function Footer() {
         submitting: false,
         submitted: true,
         success: false,
-        error: 'Failed to send message. Please try again later.'
+        message: 'Network error. Please try again later.'
       });
     }
   };
@@ -107,17 +114,13 @@ export function Footer() {
           </div>
           <div>
             <h3 className="text-xl font-bold mb-6">Get In Touch</h3>
-            {formStatus.submitted && formStatus.success ? (
-              <div className="p-4 bg-green-800/30 border border-green-600 mb-6">
-                <p className="text-green-200">Your message has been sent! I'll get back to you soon.</p>
+            {formStatus.submitted && (
+              <div className={`p-4 mb-6 ${formStatus.success ? 'bg-green-800/30 border border-green-600' : 'bg-red-800/30 border border-red-600'}`}>
+                <p className={formStatus.success ? 'text-green-200' : 'text-red-200'}>
+                  {formStatus.message} 
+                </p>
               </div>
-            ) : null}
-            
-            {formStatus.submitted && !formStatus.success ? (
-              <div className="p-4 bg-red-800/30 border border-red-600 mb-6">
-                <p className="text-red-200">{formStatus.error}</p>
-              </div>
-            ) : null}
+            )}
             
             <form className="mb-6" onSubmit={handleSubmit}>
               <div className="grid gap-4 mb-4">
