@@ -25,3 +25,24 @@
   background-color: #dc2626;
   color: white;
 } 
+
+/* hero image hue rotate */
+.hue-rotate-biased {
+  display: inline-block;
+  filter: hue-rotate(0deg);
+  
+  animation: hue-rotate-biased 12.3s linear infinite;
+}
+
+@keyframes hue-rotate-biased {
+  0%   { filter: hue-rotate(0deg); }
+
+  40%  { filter: hue-rotate(-180deg); }
+
+  100% { filter: hue-rotate(-360deg); }
+}
+
+/* pause on hover */
+.hue-rotate-biased:hover {
+  animation-play-state: paused;
+}
