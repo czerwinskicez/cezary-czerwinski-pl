@@ -7,13 +7,9 @@ import { Layout } from '../../components/Layout';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { BlogPost } from '../api/blog';
 import { db } from '../../lib/firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-
-interface BlogPostPageProps {
-  post: BlogPost & { content: string };
-}
+import { BlogPostPageProps, BlogPostWithContent } from '../../types/blog';
 
 export default function BlogPostPage({ post }: BlogPostPageProps) {
   if (!post) {
@@ -145,7 +141,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const doc = querySnapshot.docs[0];
     const data = doc.data();
 
-    const post: BlogPost & { content: string } = {
+    const post: BlogPostWithContent = {
       slug: data.slug,
       title: data.title,
       date: data.date.toDate().toISOString(),

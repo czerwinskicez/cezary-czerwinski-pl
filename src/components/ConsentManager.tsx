@@ -1,58 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-
-// Configuration
-const LOCALSTORAGE_KEY = 'googleConsentSettings_v2';
-
-interface ConsentType {
-  name: string;
-  description: string;
-  default: 'granted' | 'denied';
-  readonly: boolean;
-  show: boolean;
-}
-
-export const CONSENT_TYPES: Record<string, ConsentType> = {
-  'analytics_storage': {
-    name: 'Analytics and Telemetry Cookies',
-    description: 'These cookies allow me to measure and improve the performance of my site. They help me to know which pages are the most popular, how visitors move around the site, and to collect anonymized telemetry data for analytics.',
-    default: 'denied',
-    readonly: false,
-    show: true
-  },
-  'ad_storage': {
-    name: 'Advertising Cookies',
-    description: 'These cookies may be set through my site by advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites.',
-    default: 'denied',
-    readonly: false,
-    show: false
-  },
-  'ad_user_data': {
-    name: 'Advertising User Data',
-    description: 'Consent for sending user data to Google for advertising purposes. This works in conjunction with Advertising Cookies.',
-    default: 'denied',
-    readonly: false,
-    show: false
-  },
-  'ad_personalization': {
-    name: 'Personalized Advertising',
-    description: 'Consent for personalized advertising. This allows for features like remarketing. This works in conjunction with Advertising Cookies.',
-    default: 'denied',
-    readonly: false,
-    show: false
-  }
-};
-
-export interface ConsentSettings {
-  [key: string]: 'granted' | 'denied';
-}
+import { LOCALSTORAGE_KEY, CONSENT_TYPES, ConsentSettings } from './consentConfig';
 
 // Ensure gtag function is available
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
   }
 }
 
@@ -65,7 +20,7 @@ function useConsent() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.dataLayer = window.dataLayer || [];
-      window.gtag = window.gtag || function() { window.dataLayer.push(arguments); };
+      window.gtag = window.gtag || function(...args: unknown[]) { window.dataLayer.push(args); };
     }
   }, []);
 
@@ -77,10 +32,10 @@ function useConsent() {
       const stored = localStorage.getItem(LOCALSTORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (parsed && typeof parsed === 'object' && Object.keys(CONSENT_TYPES).some(key => parsed.hasOwnProperty(key))) {
+        if (parsed && typeof parsed === 'object' && Object.keys(CONSENT_TYPES).some(key => Object.prototype.hasOwnProperty.call(parsed, key))) {
           const currentConsent: ConsentSettings = {};
           for (const type in CONSENT_TYPES) {
-            currentConsent[type] = parsed.hasOwnProperty(type) ? parsed[type] : CONSENT_TYPES[type].default;
+            currentConsent[type] = Object.prototype.hasOwnProperty.call(parsed, type) ? parsed[type] : CONSENT_TYPES[type].default;
           }
           return currentConsent;
         }
@@ -199,10 +154,6 @@ function useConsent() {
     }
   };
 
-  const hasConsent = (): boolean => {
-    return hasStoredConsent === true;
-  };
-
   return {
     consent,
     hasStoredConsent,
@@ -211,8 +162,7 @@ function useConsent() {
     denyAll,
     updateConsent,
     saveCustomConsent,
-    resetConsent,
-    hasConsent
+    resetConsent
   };
 }
 
@@ -222,13 +172,12 @@ export function ConsentManager() {
   const [showManageButton, setShowManageButton] = useState(false);
   
   const {
-    hasConsent,
+    hasStoredConsent,
     consent,
     acceptAll,
     denyAll,
     updateConsent,
     saveCustomConsent,
-    hasStoredConsent,
     isInitialized
   } = useConsent();
 
@@ -327,7 +276,7 @@ export function ConsentManager() {
                 <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4">Customize Consent Preferences</h4>
                 
                 {Object.entries(CONSENT_TYPES)
-                  .filter(([type, config]) => config.show)
+                  .filter(([_, config]) => config.show)
                   .map(([type, config]) => (
                   <div key={type} className="p-3 sm:p-4 border border-zinc-700 bg-zinc-800 rounded">
                     <div className="flex items-start sm:items-center justify-between mb-2 gap-3">

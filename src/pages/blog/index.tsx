@@ -6,15 +6,11 @@ import Head from 'next/head';
 import { Layout } from '../../components/Layout';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { BlogPost } from '../api/blog';
-// import { ArrowRightIcon } from '@heroicons/react/24/outline'; // No longer needed directly
+import { BlogCard } from '../../components/BlogCard'; // Import the new component
 import { db } from '../../lib/firebase';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import { BlogCard } from '../../components/BlogCard'; // Import the new component
-
-interface BlogIndexProps {
-  posts: BlogPost[];
-}
+import { BlogIndexProps, BlogPost } from '../../types/blog';
+// import { ArrowRightIcon } from '@heroicons/react/24/outline'; // No longer needed directly
 
 export default function BlogIndex({ posts }: BlogIndexProps) {
   console.log('BlogIndex - Received posts:', posts); // Log received posts
