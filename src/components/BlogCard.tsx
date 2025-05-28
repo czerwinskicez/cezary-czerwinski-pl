@@ -25,7 +25,7 @@ export function BlogCard({ post }: BlogCardProps) {
           </span>
         )}
       </div>
-      <div className="p-6">
+      <div className="p-6 flex flex-col h-[280px]">
         <div className="flex justify-between items-center mb-3 text-gray-400 text-sm">
           <div className="flex items-center">
             <CalendarIcon size={14} className="mr-1" />
@@ -47,9 +47,8 @@ export function BlogCard({ post }: BlogCardProps) {
             {post.title}
           </h3>
         </Link>
-        <p className="text-gray-400 mb-4 line-clamp-3">{post.excerpt}</p>
-        <div className="flex justify-between items-center">
-          <div className="flex-grow"></div>
+        <p className="text-gray-400 mb-4 line-clamp-3 flex-grow">{post.excerpt}</p>
+        <div className="mt-auto flex justify-end">
           <Link href={`/blog/${post.slug}`} className="border border-red-600 text-red-600 px-4 py-2 font-medium hover:bg-red-600 hover:text-white transition-colors inline-flex items-center gap-1 group/read">
             Read
             <ArrowRightIcon className="w-4 h-4 transform group-hover/read:translate-x-1 transition-transform" />

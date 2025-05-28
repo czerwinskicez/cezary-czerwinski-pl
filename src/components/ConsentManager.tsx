@@ -233,7 +233,7 @@ export function ConsentManager() {
       {showManageButton && (
         <button
           onClick={handleManageConsent}
-          className="fixed bottom-4 left-4 px-3 py-2 text-xs sm:text-sm bg-red-600 text-white font-medium hover:bg-red-700 transition-colors shadow-lg z-40 sm:px-4 sm:bottom-5 sm:left-5 flex items-center gap-1.5"
+          className="fixed bottom-4 right-4 px-2 py-2 text-xs sm:text-sm border border-zinc-350 text-zinc-350 font-medium hover:border-red-600 hover:text-red-600 transition-colors shadow-lg z-40 sm:px-4 sm:bottom-5 sm:right-5 flex items-center gap-1.5"
         >
           Cookies
         </button>
