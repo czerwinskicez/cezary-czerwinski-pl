@@ -1,66 +1,73 @@
 # Cezary Czerwiński - Personal Website
 
-A modern, responsive personal website for Cezary Czerwiński built with Next.js, server-side rendering, and deployed on Vercel.
+A modern, responsive personal website built with Next.js 14, featuring a blog, contact form, and cookie consent management.
 
 ## Features
 
-- Server-Side Rendered (SSR) with Next.js
-- Responsive design with Tailwind CSS
-- Blog functionality with markdown support
-- Newsletter subscription
-- Contact form
-- Privacy policy page
+- **Modern Tech Stack**
+  - Next.js 14 with TypeScript
+  - Tailwind CSS for styling
+  - React 18 with server-side rendering
+  - Vercel Analytics and Speed Insights
 
-## Getting Started
+- **Blog System**
+  - Markdown support with react-markdown
+  - Responsive blog cards
+  - Server-side rendered blog posts
 
-### Development
+- **Contact & Communication**
+  - Contact form with Nodemailer integration
+  - Social media integration
+  - Newsletter subscription system
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a `.env.local` file with the required environment variables (see `.env.example` for reference)
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+- **Privacy & Compliance**
+  - Cookie consent management
+  - Privacy policy page
+  - GDPR compliance features
 
-### Production Build
+- **Performance & SEO**
+  - Server-side rendering
+  - Optimized images and assets
+  - Responsive design for all devices
 
-To create a production build:
+## Tech Stack
 
-```bash
-npm run build
+- **Frontend**
+  - Next.js 14
+  - React 18
+  - TypeScript
+  - Tailwind CSS
+  - Heroicons & Lucide React
+
+- **Backend**
+  - Next.js API Routes
+  - Nodemailer for email handling
+  - Firebase integration
+
+- **Development Tools**
+  - ESLint
+  - TypeScript
+  - PostCSS
+  - Tailwind Typography
+
+## Project Structure
+
+```
+src/
+├── components/     # React components
+├── pages/         # Next.js pages and API routes
+├── styles/        # Global styles and Tailwind config
+├── types/         # TypeScript type definitions
+└── lib/           # Utility functions and helpers
 ```
 
-To run the production build locally:
+## AI Usage
+This code is almost fully _vibe-coded_.
 
-```bash
-npm start
-```
+## License
 
-## Deployment on Vercel
+This project is licensed under the MIT License.
 
-This project is optimized for deployment on Vercel:
+## Contact
 
-1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
-2. Import the project in the Vercel dashboard
-3. Configure the required environment variables:
-   - `NEXT_PUBLIC_BASE_URL`: Your production domain (e.g., https://cezary-czerwinski.pl)
-   - `EMAIL_HOST`: SMTP server for sending emails
-   - `EMAIL_USER`: Email account username
-   - `EMAIL_PASS`: Email account password
-   - `CONTACT_EMAIL`: Email where contact form submissions will be sent
-   - `MONGODB_URI`: MongoDB connection string for newsletter subscriptions
-4. Deploy
-
-## Technologies Used
-
-- [Next.js](https://nextjs.org/) - React framework with SSR
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [React Markdown](https://github.com/remarkjs/react-markdown) - Markdown rendering
-- [MongoDB](https://www.mongodb.com/) - Database for newsletter subscriptions
-- [Nodemailer](https://nodemailer.com/) - Email sending functionality
-- [Vercel](https://vercel.com/) - Deployment platform
+For any questions or concerns, please reach out through the contact form on the website.
