@@ -44,7 +44,11 @@ export function BlogSection({ posts }: BlogSectionProps) {
           ))}
         </div>
         <div className="text-center">
-          <Link href="/blog" className="px-6 py-3 bg-red-600 text-white font-medium hover:bg-red-700 transition-colors inline-flex items-center group">
+          <Link href="/blog" 
+                className="px-6 py-3 bg-red-600 text-white font-medium hover:bg-red-700 transition-colors inline-flex items-center group gtm-track-click"
+                data-gtm-event-category="BlogSection"
+                data-gtm-event-action="click"
+                data-gtm-event-label="CTA - View All Articles">
             View All Articles
             <ArrowRightIcon size={18} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
           </Link>

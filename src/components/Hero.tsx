@@ -19,11 +19,19 @@ export function Hero() {
               We shouldn't be scared of the future. <br />We should be excited about it, yet it comes with challenges and dificult decisions.
             </p>
             <div className="flex space-x-4">
-              <a href="#blog" className="px-6 py-3 bg-red-600 text-white font-medium hover:bg-red-700 transition-colors flex items-center group">
+              <a href="#blog" 
+                 className="px-6 py-3 bg-red-600 text-white font-medium hover:bg-red-700 transition-colors flex items-center group gtm-track-click" 
+                 data-gtm-event-category="Hero" 
+                 data-gtm-event-action="click" 
+                 data-gtm-event-label="CTA - Read Blog">
                 Read Blog
                 <ArrowRightIcon size={18} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="#about" className="px-6 py-3 bg-transparent border border-white text-white font-medium hover:border-red-600 hover:text-red-600 transition-colors">
+              <a href="#about" 
+                 className="px-6 py-3 bg-transparent border border-white text-white font-medium hover:border-red-600 hover:text-red-600 transition-colors gtm-track-click" 
+                 data-gtm-event-category="Hero" 
+                 data-gtm-event-action="click" 
+                 data-gtm-event-label="CTA - About Me">
                 About Me
               </a>
             </div>
