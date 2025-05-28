@@ -73,7 +73,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
             </div>
             
             {post.heroImageUrl && (
-              <div className="relative w-full h-[300px] md:h-[400px] mb-8 rounded-lg overflow-hidden">
+              <div className="relative w-full aspect-square mb-8 rounded-lg overflow-hidden">
                 <Image 
                   src={post.heroImageUrl} 
                   alt={post.title}

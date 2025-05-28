@@ -11,7 +11,7 @@ export interface BlogCardProps {
 export function BlogCard({ post }: BlogCardProps) {
   return (
     <div className="bg-zinc-900 overflow-hidden shadow-lg hover:shadow-xl hover:shadow-red-600/20 transition-all group">
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative aspect-square overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
         <Image
           src={post.heroImageUrl || '/img/placeholder.jpg'}
