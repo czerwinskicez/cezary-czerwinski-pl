@@ -11,9 +11,8 @@ A modern, responsive personal website built with Next.js 14, featuring a blog, c
   - Vercel Analytics and Speed Insights
 
 - **Blog System**
-  - Markdown support with react-markdown
-  - Responsive blog cards
   - Server-side rendered blog posts
+  - Managed by CMS hosted on Firebase
 
 - **Contact & Communication**
   - Contact form with Nodemailer integration

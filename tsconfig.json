@@ -9,14 +9,13 @@
     ],
     "module": "ESNext",
     "skipLibCheck": true,
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    /* Linting */
+    "types": ["react", "react-dom"],
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
