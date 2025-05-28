@@ -85,13 +85,23 @@ export function About() {
                   <UserIcon className="text-red-500 mr-3" size={24} />
                   <h3 className="text-xl font-bold text-white">Who I Am</h3>
                 </div>
-                <p className="text-gray-300 leading-relaxed">
-                  Hey there! I'm a tech enthusiast and consultant who loves
-                  turning complex problems into elegant solutions. When I'm not
-                  deep diving into code or architecting cloud solutions, you'll
-                  find me writing about the latest tech trends and sharing
-                  insights from my decade-long journey in the digital world.
-                </p>
+                <div className="text-gray-300 leading-relaxed">
+                
+                  <p className="mb-2">
+                    I'm a consultant and futurist committed to building a human-centric technological future. 
+                    My approach is pragmatic: leveraging cloud technologies, AI and data to craft solutions that drive meaningful
+                    change for individuals and organizations. My professional journey has centered on developing 
+                    systems from intricate challenges.
+                  </p>
+                  <p className="mb-2">
+                    I am deeply interested in AI, Quantum Technologies, and strategic innovation. 
+                    Outside of work, I find balance in gaming, cycling, contemplating.
+                  </p>
+                  <p className="mb-2">
+                    My motto, "Non omnis moriar," reflects my belief in the enduring legacy of our work.
+                  </p>
+
+                </div>
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
@@ -105,7 +115,8 @@ export function About() {
                     <span className="text-red-500 font-medium">
                       2025 - Present
                     </span>
-                    <p className="font-medium mt-1">PPH Kostrzewa - Technology Lead</p>
+                    <p className="font-medium mt-1">PPH Kostrzewa</p>
+                    <p className="text-medium text-gray-400 mb-2">Technology Lead</p>
                     <p className="text-sm text-gray-400">
                       Helping to navigate into digital transformation and innovation
                     </p>
@@ -114,7 +125,8 @@ export function About() {
                     <span className="text-red-500 font-medium">
                       2021 - 2024
                     </span>
-                    <p className="font-medium mt-1">PwC - Marketing Cloud Consultant</p>
+                    <p className="font-medium mt-1">PwC IT Services</p>
+                    <p className="text-medium text-gray-400 mb-2">Marketing Cloud Consultant</p>
                     <p className="text-sm text-gray-400">
                       Understanding client needs, consulting on best practices, and delivering best available solutions
                     </p>
