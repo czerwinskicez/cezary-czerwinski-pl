@@ -45,7 +45,6 @@ export default {
               overflowWrap: 'break-word',
               hyphens: 'auto',
               maxWidth: '100%',
-              display: 'inline-block',
               '&:hover': {
                 color: '#dc2626',
               },
