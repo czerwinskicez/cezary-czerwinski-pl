@@ -41,6 +41,10 @@ export default {
             },
             a: {
               color: '#ef4444',
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word',
+              hyphens: 'auto',
+              maxWidth: '100%',
               '&:hover': {
                 color: '#dc2626',
               },
@@ -70,6 +74,8 @@ export default {
               backgroundColor: '#1f2937',
               padding: '0.2em 0.4em',
               borderRadius: '0.25em',
+              wordBreak: 'break-word',
+              whiteSpace: 'pre-wrap',
             },
             pre: {
               backgroundColor: '#1f2937',

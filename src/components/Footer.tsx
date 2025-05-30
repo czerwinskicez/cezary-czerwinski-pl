@@ -83,7 +83,10 @@ export function Footer() {
       <div className="container mx-auto max-w-6xl px-4 pb-16 pt-32 relative">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <div className="flex items-center space-x-2 mb-6">
+            <div className="flex items-center space-x-2 mb-6 gtm-track-click" 
+                 data-gtm-event-category="Footer" 
+                 data-gtm-event-action="click" 
+                 data-gtm-event-label="Logo">
               <div className="h-10 w-10 bg-red-600 flex items-center justify-center text-white font-bold text-xl clip-edges">
                 CC
               </div>
@@ -96,13 +99,16 @@ export function Footer() {
               I'm an employee who thrives on being part of environmental culture, values, and mission — and seeing the real impact of my work. <br />
             </p>
             <div className="flex space-x-4">
-              <LinkedIn />
-              <GitHub />
+              <LinkedIn location="Footer" />
+              <GitHub location="Footer" />
             </div>
             <ul className="pt-10 space-y-4">
               <li className="flex items-start">
                 <MailIcon size={20} className="mr-3 text-red-600 mt-1 flex-shrink-0" />
-                <span className="text-slate-300">czerwinskicez@gmail.com</span>
+                <span className="text-slate-300 gtm-track-click" 
+                      data-gtm-event-category="Footer" 
+                      data-gtm-event-action="click" 
+                      data-gtm-event-label="Email - czerwinskicez@gmail.com">czerwinskicez@gmail.com</span>
               </li>
               <li className="flex items-start">
                 <MapPinIcon size={20} className="mr-3 text-red-600 mt-1 flex-shrink-0" />
@@ -122,7 +128,11 @@ export function Footer() {
               </div>
             )}
             
-            <form className="mb-6" onSubmit={handleSubmit}>
+            <form className="mb-6 gtm-track-submit" 
+                  onSubmit={handleSubmit}
+                  data-gtm-event-category="ContactForm"
+                  data-gtm-event-action="submit"
+                  data-gtm-event-label="Message Form">
               <div className="grid gap-4 mb-4">
                 <div>
                   <input 
@@ -166,7 +176,11 @@ export function Footer() {
               </div>
               
               <p className="text-gray-500 text-sm mb-4">
-                I respect your privacy. <a href="/privacy-policy" className="text-red-600 hover:text-red-500">Privacy Policy</a>.
+                I respect your privacy. <a href="/privacy-policy" 
+                                           className="text-red-600 hover:text-red-500 gtm-track-click" 
+                                           data-gtm-event-category="ContactForm"
+                                           data-gtm-event-action="click"
+                                           data-gtm-event-label="Privacy Policy Link">Privacy Policy</a>.
               </p>
 
               <button 
@@ -181,9 +195,17 @@ export function Footer() {
         </div>
         <div className="border-t border-zinc-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            {new Date().getFullYear()} Cezary Czerwiński | <Link href="/privacy-policy" className="hover:text-red-600 transition-colors">Privacy Policy</Link>
+            {new Date().getFullYear()} Cezary Czerwiński | <Link href="/privacy-policy" 
+                                                              className="hover:text-red-600 transition-colors gtm-track-click" 
+                                                              data-gtm-event-category="Footer"
+                                                              data-gtm-event-action="click"
+                                                              data-gtm-event-label="Copyright Privacy Policy Link">Privacy Policy</Link>
           </p>
-          <button onClick={scrollToTop} className="h-10 w-10 bg-zinc-800 flex items-center justify-center hover:bg-red-600 transition-colors">
+          <button onClick={scrollToTop} 
+                  className="h-10 w-10 bg-zinc-800 flex items-center justify-center hover:bg-red-600 transition-colors gtm-track-click"
+                  data-gtm-event-category="Footer"
+                  data-gtm-event-action="click"
+                  data-gtm-event-label="Scroll to Top">
             <ArrowUpIcon size={20} />
           </button>
         </div>

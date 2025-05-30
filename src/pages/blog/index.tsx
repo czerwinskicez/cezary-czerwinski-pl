@@ -172,7 +172,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
               </p>
             </div>
 
-            {/* Category Filters */} 
+            {/* Category Filters */}
             {allCategories.length > 0 && (
               <div className="mb-12 text-center">
                 <p className="text-lg text-gray-400 mb-4">Filter by category:</p>
@@ -275,4 +275,4 @@ export const getStaticProps: GetStaticProps = async () => {
       revalidate: 60, // Revalidate every 1 minute in case of error
     };
   }
-}; 
+};

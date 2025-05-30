@@ -66,7 +66,11 @@ export function ContactSection() {
             Subscribe to my newsletter to get the latest updates on tech insights, articles, and exclusive content.
           </p>
         </div>
-        <form className="bg-zinc-900 p-8 md:p-12 shadow-xl" onSubmit={handleSubmit}>
+        <form className="bg-zinc-900 p-8 md:p-12 shadow-xl gtm-track-submit" 
+              onSubmit={handleSubmit}
+              data-gtm-event-category="Newsletter"
+              data-gtm-event-action="submit" 
+              data-gtm-event-label="Subscription Form">
           <div className="mb-6 text-center">
             <p className="text-slate-300 mb-6">
               Join my mailing list and be the first to know about new articles, resources, and industry updates.
@@ -101,7 +105,11 @@ export function ContactSection() {
               </button>
             </div>
             <p className="text-gray-500 text-sm mt-4">
-              I respect your privacy. <a href="/privacy-policy" className="text-red-600 hover:text-red-500">Privacy Policy</a>.
+              I respect your privacy. <a href="/privacy-policy" 
+                                       className="text-red-600 hover:text-red-500 gtm-track-click" 
+                                       data-gtm-event-category="Newsletter"
+                                       data-gtm-event-action="click"
+                                       data-gtm-event-label="Privacy Policy Link">Privacy Policy</a>.
             </p>
           </div>
         </form>
