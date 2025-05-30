@@ -1,53 +1,83 @@
 # Cezary Czerwiński - Personal Website
 
-A modern, responsive personal website built with Next.js 14, featuring a blog, contact form, and cookie consent management.
+A modern, responsive personal website built with Next.js and hosted on Vercel. The website serves as a professional portfolio and blog platform for Cezary Czerwiński, a Technology Consultant & Developer.
 
-## Features
+## 🌟 Features
 
-- **Modern Tech Stack**
-  - Next.js 14 with TypeScript
-  - Tailwind CSS for styling
-  - React 18 with server-side rendering
-  - Vercel Analytics and Speed Insights
+### Core Functionality
+- Responsive design optimized for all devices
+- Server-side rendering for optimal performance
+- Static site generation for blog content
+- Google Tag Manager integration for analytics
+- SEO optimized with proper meta tags
 
-- **Blog System**
-  - Server-side rendered blog posts
-  - Managed by CMS hosted on Firebase
+### Main Sections
+1. **Homepage**
+   - Hero section with main introduction
+   - About section
+   - Latest blog posts preview
+   - Contact section
 
-- **Contact & Communication**
-  - Contact form with Nodemailer integration
-  - Social media integration
-  - Newsletter subscription system
+2. **Blog System**
+   - Dynamic blog post pages
+   - Category-based filtering
+   - Tag-based organization
+   - Reading time estimation
+   - Featured images support
 
-- **Privacy & Compliance**
-  - Cookie consent management
-  - Privacy policy page
-  - GDPR compliance features
+3. **Contact Features**
+   - Contact form with validation
+   - Newsletter subscription system
+   - Privacy policy page
 
-- **Performance & SEO**
-  - Server-side rendering
-  - Optimized images and assets
-  - Responsive design for all devices
+### Technical Features
+- TypeScript for type safety
+- Tailwind CSS for styling
+- Firebase integration for data storage
+- Automatic revalidation of static pages
+- CORS protection
+- Environment-based configuration
 
-## Tech Stack
+## 🚀 Tech Stack
 
-- **Frontend**
-  - Next.js 14
-  - React 18
-  - TypeScript
-  - Tailwind CSS
-  - Heroicons & Lucide React
+- **Framework**: Next.js
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: Firebase Firestore
+- **Hosting**: Vercel
+- **Analytics**: Google Tag Manager
 
-- **Backend**
-  - Next.js API Routes
-  - Nodemailer for email handling
-  - Firebase integration
+## 🔧 Development
 
-- **Development Tools**
-  - ESLint
-  - TypeScript
-  - PostCSS
-  - Tailwind Typography
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Run development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## 🔐 Environment Variables
+
+Required environment variables:
+- `NEXT_PUBLIC_FIREBASE_API_KEY`
+- `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+- `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+- `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+- `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+- `NEXT_PUBLIC_FIREBASE_APP_ID`
+- `NEXT_PRIVATE_REVALIDATION_TOKEN`
+
+## 📝 License
+
+All rights reserved. This project is proprietary and confidential.
 
 ## Project Structure
 
@@ -62,10 +92,6 @@ src/
 
 ## AI Usage
 This code is almost fully _vibe-coded_.
-
-## License
-
-This project is licensed under the MIT License.
 
 ## Contact
 
