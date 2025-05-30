@@ -93,7 +93,7 @@ export function Footer() {
             </div>
             <p className="text-slate-300 mb-6">
               I'm not just to deliver services. <br />
-              I'm an employee who thrives on being part of a company's culture, values, and mission — and seeing the real impact of my work. <br />
+              I'm an employee who thrives on being part of environmental culture, values, and mission — and seeing the real impact of my work. <br />
             </p>
             <div className="flex space-x-4">
               <LinkedIn />

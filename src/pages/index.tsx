@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async () => {
         latestPosts,
       },
       // Re-generate the page at most once per day
-      revalidate: 86400,
+      revalidate: 60 * 60 * 24,
     };
   } catch (error) {
     console.error('Error fetching latest posts for home page:', error);

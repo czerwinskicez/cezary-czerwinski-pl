@@ -14,10 +14,10 @@ export function BlogCard({ post }: BlogCardProps) {
       <div className="relative aspect-square overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
         <Image
-          src={post.heroImageUrl || '/img/placeholder.jpg'}
+          src={post.heroImageUrl || '/img/bg.jpeg'}
           alt={post.title}
           fill
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale-[0.5] group-hover:grayscale-0"
         />
         {post.category && (
           <span className="absolute top-4 right-4 px-3 py-1 bg-red-600 text-white text-xs font-medium z-20">
