@@ -24,6 +24,9 @@
   "overrides": {
     "@vercel/analytics": {
       "next": "$next"
+    },
+    "@vercel/speed-insights": {
+      "next": "$next"
     }
   },
   "devDependencies": {
