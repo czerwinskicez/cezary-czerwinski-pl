@@ -245,7 +245,7 @@ export function ConsentManager() {
           <div className="max-w-4xl mx-auto">
             <h3 className="text-lg sm:text-xl font-bold text-white mb-3">I Value Your Privacy</h3>
             <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-5 leading-relaxed">
-              I use cookies and similar technologies to enhance your browsing experience, personalize content, 
+              I use cookies and similar technologies to enhance your browsing experience
               and analyze my traffic. By clicking "Accept All", you consent to the use of 
               all the cookies. However, you may visit cookie settings to provide a controlled consent. 
               If You want, You can read <a href="/privacy-policy" className="text-red-600 hover:text-red-500">Privacy Policy</a>.
