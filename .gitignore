@@ -25,3 +25,5 @@ dist-ssr
 
 .next
 .next/*
+.vercel
+.env*.local

@@ -25,6 +25,8 @@ export default function Home({ latestPosts }: HomeProps) {
         <meta name="description" content="Cezary Czerwiński - Technology consultant specialized in software architecture, cloud solutions, and digital transformation" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="canonical" href="https://www.cezary-czerwinski.pl/" />
+
 
         <script
           dangerouslySetInnerHTML={{
@@ -41,11 +43,21 @@ export default function Home({ latestPosts }: HomeProps) {
         height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
 
         <Header />
-        <Hero />
-        <About />
-        <BlogSection posts={latestPosts} />
-        <ContactSection />
-        <Footer />
+        <div data-aos="fade-up">
+          <Hero />
+        </div>
+        <div data-aos="fade-in">
+          <About />
+        </div>
+        <div data-aos="fade-in">
+          <BlogSection posts={latestPosts} />
+        </div>
+        <div data-aos="fade-left">
+          <ContactSection />
+        </div>
+        <div data-aos="fade-in">
+          <Footer />
+        </div>
       </Layout>
     </>
   );
