@@ -86,21 +86,17 @@ export function About() {
                   <h3 className="text-xl font-bold text-white">Who I Am</h3>
                 </div>
                 <div className="text-gray-300 leading-relaxed">
-                
                   <p className="mb-2">
-                    I'm a consultant and futurist committed to building a human-centric technological future. 
-                    My approach is pragmatic: leveraging cloud technologies, AI and data to craft solutions that drive meaningful
-                    change for individuals and organizations. My professional journey has centered on developing 
-                    systems from intricate challenges.
+                    I am a technology consultant and business analyst focused on connecting business, data, and technology in both human- and agent-centered solutions.
+                    I combine analytical rigor with creative engineering thinking to deliver complex automation and digital transformation projects.
                   </p>
                   <p className="mb-2">
-                    I am deeply interested in AI, Quantum Technologies, and strategic innovation. 
-                    Outside of work, I find balance in gaming, cycling, contemplating.
+                    I believe technology should learn, improve, and evolve rather than merely serve.
+                    I also bring a military-oriented education from WAT and the War Studies Academy.
                   </p>
                   <p className="mb-2">
                     My motto, "Non omnis moriar," reflects my belief in the enduring legacy of our work.
                   </p>
-
                 </div>
               </div>
             </div>
@@ -115,10 +111,20 @@ export function About() {
                     <span className="text-red-500 font-medium">
                       2025 - Present
                     </span>
-                    <p className="font-medium mt-1">PPH Kostrzewa</p>
-                    <p className="text-medium text-gray-400 mb-2">Technology Lead</p>
+                    <p className="font-medium mt-1">Deloitte Advisory</p>
+                    <p className="text-medium text-gray-400 mb-2">Technology & Transformation M&A Consultant</p>
                     <p className="text-sm text-gray-400">
-                      Helping to navigate into digital transformation and innovation
+                      Delivering strategic IT due diligence, transformation roadmaps, and target operating models for board-level stakeholders.
+                    </p>
+                  </li>
+                  <li>
+                    <span className="text-red-500 font-medium">
+                      2024 - 2025
+                    </span>
+                    <p className="font-medium mt-1">PPH Kostrzewa</p>
+                    <p className="text-medium text-gray-400 mb-2">Product Manager / IT Officer</p>
+                    <p className="text-sm text-gray-400">
+                      Leading digital transformation projects that combined AI, cloud and process automation.
                     </p>
                   </li>
                   <li>
@@ -126,9 +132,9 @@ export function About() {
                       2021 - 2024
                     </span>
                     <p className="font-medium mt-1">PwC IT Services</p>
-                    <p className="text-medium text-gray-400 mb-2">Marketing Cloud Consultant</p>
+                    <p className="text-medium text-gray-400 mb-2">Marketing Automation Business Consultant</p>
                     <p className="text-sm text-gray-400">
-                      Understanding client needs, consulting on best practices, and delivering best available solutions
+                      Implementing Salesforce Marketing Cloud solutions and automations for global clients.
                     </p>
                   </li>
                 </ul>
@@ -141,24 +147,24 @@ export function About() {
                 <ul className="space-y-4 text-gray-300">
                   <li>
                     <span className="text-red-500 font-medium">
-                      Day of birth - Current
+                      W trakcie
                     </span>
-                    <p className="font-medium mt-1">Life learner</p>
-                    <p className="text-sm text-gray-400">Always thirsty for acquiring knowledge</p>
+                    <p className="font-medium mt-1">Akademia Sztuki Wojennej</p>
+                    <p className="text-sm text-gray-400">Zarządzanie i Dowodzenie</p>
                   </li>
                   <li>
                     <span className="text-red-500 font-medium">
-                      2021 - 2023
+                      Zakończone
                     </span>
-                    <p className="font-medium mt-1">WIT Academy</p>
-                    <p className="text-sm text-gray-400">IT Management</p>
+                    <p className="font-medium mt-1">Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego</p>
+                    <p className="text-sm text-gray-400">Informatyka</p>
                   </li>
                   <li>
                     <span className="text-red-500 font-medium">
-                      2018 - 2021
+                      Zakończone
                     </span>
-                    <p className="font-medium mt-1">Military Univeristy of Technology</p>
-                    <p className="text-sm text-gray-400">Information Technology</p>
+                    <p className="font-medium mt-1">Zespół Szkół Elektronicznych i Informatycznych im. KEN</p>
+                    <p className="text-sm text-gray-400">Informatyka</p>
                   </li>
                 </ul>
               </div>
