@@ -1,4 +1,3 @@
-import React from 'react';
 import { BlogCard } from './BlogCard';
 import { BlogPost } from '../pages/api/blog';
 import Link from 'next/link';

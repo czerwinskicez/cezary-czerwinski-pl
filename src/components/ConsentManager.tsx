@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { LOCALSTORAGE_KEY, CONSENT_TYPES, ConsentSettings } from './consentConfig';
 
 // Ensure gtag function is available

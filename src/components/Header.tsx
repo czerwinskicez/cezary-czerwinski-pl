@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { MenuIcon, XIcon } from 'lucide-react';
 
 export function Header() {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 
 type NewsletterResponse = {
   success: boolean;
@@ -14,7 +14,7 @@ export function ContactSection() {
     message: ''
   });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ ...status, submitting: true });
 

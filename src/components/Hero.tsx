@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowRightIcon } from 'lucide-react';
 export function Hero() {
   return <section id="home" className="relative pt-16 pb-24 px-4 overflow-hidden">

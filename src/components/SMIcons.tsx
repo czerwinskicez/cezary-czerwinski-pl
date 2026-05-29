@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface SMIconProps {
   location: string; // To distinguish context, e.g., 'About Section', 'Footer'
 }
